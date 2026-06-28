@@ -57,7 +57,7 @@ export async function POST(req: Request) {
   <div style="background:#0b0b0b;padding:40px 20px;font-family:Arial,sans-serif;color:#FDF8F2;">
 
     <div style="text-align:center;margin-bottom:30px;">
-      <img src="https://cornrow-africa-git-main-ifiokabasi-ettang-s-projects.vercel.app/images/LOGO#2.png" width="60" style="border-radius:50%;" />
+      <img src="https://cornrow-africa-git-main-ifiokabasi-ettang-s-projects.vercel.app/images/logo.png" width="60" style="border-radius:50%;" />
     </div>
 
     <div style="max-width:520px;margin:0 auto;background:#141210;padding:28px;border-radius:12px;border:1px solid rgba(255,215,0,0.2);">
