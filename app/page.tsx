@@ -561,31 +561,7 @@ export default function CornrowAcademyPage() {
       </section>
 
       {/* ═══════════════ END CREDITS ═══════════════ */}
-      <footer className={styles.credits}>
-        <div className={styles.creditsLogo}>Cornrow Academy</div>
-
-        <div className={styles.heroLogoMark} aria-hidden="true">
-          <Image
-            src="/images/logo.png"
-            alt="Cornrow Academy Logo"
-            width={40}
-            height={40}
-            className={styles.logoImage}
-          />
-        </div>
-
-        <div className={styles.creditsWindow}>
-          <div className={styles.creditsTrack}>
-            <div className={styles.creditsRoll}>
-              Telling stories that transform lives.
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.creditsFine}>
-          © {new Date().getFullYear()} Cornrow Academy. All rights reserved.
-        </div>
-      </footer>
+    
     </main>
   );
 }
