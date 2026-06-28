@@ -498,7 +498,7 @@ export default function CornrowAcademyPage() {
                 <div className={styles.formSubmitRow}>
                   <p className={styles.formNote}>
                     No prior filmmaking experience required. We'll review your
-                    application and respond with full details on dates, tuition, and
+                    application and respond with full details on dates, and
                     next steps.
                   </p>
 
