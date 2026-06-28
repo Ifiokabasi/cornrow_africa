@@ -1,11 +1,25 @@
 // app/api/apply/route.ts
-export const dynamic = 'force-dynamic'; // ✅ Add this at the top
+export const dynamic = 'force-dynamic';
 
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { createClient } from '@supabase/supabase-js';
 
 export async function POST(req: Request) {
   try {
+    // ✅ Initialize Supabase INSIDE the handler, not at module level
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.error('Supabase environment variables are missing');
+      return NextResponse.json(
+        { success: false, error: "Server configuration error" },
+        { status: 500 }
+      );
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
     const body = await req.json();
 
     const { error } = await supabase
@@ -31,6 +45,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
+    console.error(err);
     return NextResponse.json(
       { success: false, error: "Server error" },
       { status: 500 }
