@@ -171,36 +171,45 @@ export default function CornrowAcademyPage() {
       </section>
 
       {/* ═══════════════ MISSION ═══════════════ */}
-      <section className={styles.missionWrap}>
-        <div className={styles.section}>
-          <div className={styles.missionGrid}>
-            <div className={styles.missionLead}>
-              <div className={styles.sectionEyebrow}>Our Mission</div>
+   <section className={styles.missionWrap}>
+    {/* ✅ Parallax Background Container */}
+    <div className={styles.parallaxBg}>
+      <div className={styles.parallaxImage} />
+      <div className={styles.parallaxOverlay} />
+    </div>
+    
+    {/* ✅ Content Container (on top of parallax) */}
+    <div className={styles.missionContent}>
+      <div className={styles.section}>
+        <div className={styles.missionGrid}>
+          <div className={styles.missionLead}>
+            <div className={styles.sectionEyebrow}>Our Mission</div>
 
-              <h2 className={styles.sectionTitle}>
-                Filmmaking is not just entertainment—it is a language for the Kingdom.
-              </h2>
+            <h2 className={styles.sectionTitle}>
+              Filmmaking is not just entertainment—it is a language for the Kingdom.
+            </h2>
 
-              <p className={styles.sectionBody}>
-                At Cornrow Academy, we form filmmakers who pursue both craft and conviction—
-                shaping stories with creative discipline, spiritual depth, and intentionality.
-                In their hands, the camera becomes an instrument of ministry.
-              </p>
-            </div>
+            <p className={styles.sectionBody}>
+              At Cornrow Academy, we form filmmakers who pursue both craft and conviction—
+              shaping stories with creative discipline, spiritual depth, and intentionality.
+              In their hands, the camera becomes an instrument of ministry.
+            </p>
+          </div>
 
-            <div className={styles.reelList}>
-              {missionPoints.map((point, i) => (
-                <div key={point} className={styles.reelItem}>
-                  <span className={styles.reelMark}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span>{point}</span>
-                </div>
-              ))}
-            </div>
+          <div className={styles.reelList}>
+            {missionPoints.map((point, i) => (
+              <div key={point} className={styles.reelItem}>
+                <span className={styles.reelMark}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span>{point}</span>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+</section>
 
       {/* ═══════════════ WHO SHOULD ATTEND ═══════════════ */}
       <section className={styles.section}>
@@ -561,6 +570,35 @@ export default function CornrowAcademyPage() {
       </section>
 
       {/* ═══════════════ END CREDITS ═══════════════ */}
+       <footer className={styles.credits}>
+        <div className={styles.creditsBadge} aria-hidden="true">
+          <Image
+            src="/images/LOGO2.png"
+            alt=""
+            width={70}
+            height={70}
+            className={styles.logoImage}
+          />
+        </div>
+
+        <div className={styles.creditsLogo}>Cornrow</div>
+        <div className={styles.creditsTagline}>
+          Labs | Film | Education
+        </div>
+
+        <div className={styles.creditsWindow}>
+          {/* <div >
+            <span className={styles.creditsRoll}>
+              Telling stories that transform lives.
+            </span>
+           
+          </div> */}
+        </div>
+
+        <div className={styles.creditsFine}>
+          © {new Date().getFullYear()} Cornrow Academy. All rights reserved.
+        </div>
+      </footer>
     
     </main>
   );
