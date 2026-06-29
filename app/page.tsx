@@ -573,7 +573,7 @@ export default function CornrowAcademyPage() {
        <footer className={styles.credits}>
         <div className={styles.creditsBadge} aria-hidden="true">
           <Image
-            src="/images/LOGO2.png"
+            src="/images/logo.png"
             alt=""
             width={70}
             height={70}
@@ -596,7 +596,7 @@ export default function CornrowAcademyPage() {
         </div>
 
         <div className={styles.creditsFine}>
-          © {new Date().getFullYear()} Cornrow Academy. All rights reserved.
+          © {new Date().getFullYear()} Cornrow. All rights reserved.
         </div>
       </footer>
     

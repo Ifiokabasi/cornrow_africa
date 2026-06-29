@@ -1171,8 +1171,8 @@
 
 .credits {
   position: relative;
-  background: var(--black);
-  color: var(--ivory);
+  background: var(--gold);
+  color: var(--black-2);
   text-align: center;
   padding: clamp(56px, 8vw, 88px) 24px clamp(32px, 5vw, 48px);
   overflow: hidden;
@@ -1282,7 +1282,7 @@
   position: relative;
   z-index: 1;
   font-size: 11px;
-  color: var(--smoke-d);
+  color: var(--black-2);
 }
 /* ═══════════════════════════════════════════
    REDUCED MOTION
