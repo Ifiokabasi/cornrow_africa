@@ -83,8 +83,9 @@ export async function POST(req: Request) {
         We are reviewing your application and will contact you soon with next steps.
       </p>
 
-      <p style="margin-top:25px;font-size:12px;color:#FFD700;">
-        — Cornrow Academy • Story. Faith. Transformation.
+      <h2 style="margin-top:25px;font-size:21px;color:#FFD700; font-weight: 800; margin-bottom: -15px">
+         Cornrow</h2>
+         <p> Lab | Film | Education
       </p>
     </div>
 
