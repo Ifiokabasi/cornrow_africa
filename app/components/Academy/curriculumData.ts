@@ -232,15 +232,15 @@ export const workshops = [
 
 export const whoShouldAttend = [
   "Christian filmmakers",
-  "Church media teams",
-  "Youth leaders",
-  "Pastors and ministry leaders",
   "Documentary storytellers",
-  "Christian content creators",
-  "Actors",
-  "Worship creatives",
-  "Students",
-  "Anyone passionate about telling stories that honour God",
+  "Narrative filmmakers",
+  "Church media teams",
+  "Pastors and ministry leaders",
+  "Actors and screenwriters",
+  "Content creators",
+  "Students and emerging creatives",
+  "Video journalists",
+  "Anyone passionate about telling stories that inspire faith, hope, and transformation",
 ];
 
 export const missionPoints = [
