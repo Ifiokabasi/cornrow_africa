@@ -326,6 +326,7 @@
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 .btnGhost:hover {
+  
   border-color: var(--black-2);
   color: var(--black);
   background: rgba(255,215,0,0.06);

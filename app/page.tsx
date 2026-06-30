@@ -1,7 +1,7 @@
 // app/page.tsx — Cornrow Academy
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./page.module.css";
 import Image from "next/image";
@@ -27,6 +27,8 @@ export default function CornrowAcademyPage() {
     type: "success" | "error";
     message: string;
   } | null>(null);
+
+  const formRef = useRef<HTMLFormElement>(null);
 
   function toggleModule(no: number) {
     setOpenModule((prev) => (prev === no ? null : no));
@@ -117,7 +119,10 @@ export default function CornrowAcademyPage() {
         type: "success",
         message: "Application submitted successfully! We'll be in touch soon.",
       });
-      e.currentTarget.reset();
+
+     if (formRef.current) {
+  formRef.current.reset();
+}
 
     } catch (error) {
       setSubmitStatus({
@@ -554,6 +559,7 @@ export default function CornrowAcademyPage() {
             {/* ✅ Cinematic Overlay with Scroll Lock */}
             <div className={styles.formWrapper}>
               <form
+                ref={formRef}
                 className={`${styles.formGrid} ${
                   isSubmitted ? styles.formBlur : ""
                 }`}
