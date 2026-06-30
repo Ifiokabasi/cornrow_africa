@@ -12,6 +12,9 @@ import {
   whoShouldAttend,
   missionPoints,
   graduateWith,
+  importantDates,
+  programmeFormat,
+  REGISTRATION_DEADLINE_ISO,
 } from "./components/Academy/curriculumData";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -28,6 +31,40 @@ export default function CornrowAcademyPage() {
   function toggleModule(no: number) {
     setOpenModule((prev) => (prev === no ? null : no));
   }
+
+  // ✅ Live countdown to the registration deadline
+  const [timeLeft, setTimeLeft] = useState<{
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+    expired: boolean;
+  }>({ days: 0, hours: 0, minutes: 0, seconds: 0, expired: false });
+
+  useEffect(() => {
+    const deadline = new Date(REGISTRATION_DEADLINE_ISO).getTime();
+
+    function tick() {
+      const now = Date.now();
+      const diff = deadline - now;
+
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, expired: true });
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      setTimeLeft({ days, hours, minutes, seconds, expired: false });
+    }
+
+    tick();
+    const interval = setInterval(tick, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // ✅ Auto-reset after 8 seconds
   useEffect(() => {
@@ -122,6 +159,7 @@ export default function CornrowAcademyPage() {
           >
             <h1 className={styles.heroTitle}>
               Tell Stories That Inspire
+              <br />
               Faith, Hope and Transformation
             </h1>
 
@@ -137,6 +175,60 @@ export default function CornrowAcademyPage() {
               <a href="#curriculum" className={`${styles.btnGhost} ${styles.heroGhostOnGold}`}>
                 See the Curriculum
               </a>
+            </div>
+
+            {/* ✅ Countdown + key dates */}
+            <div className={styles.heroCountdown}>
+              <div className={styles.heroCountdownLabel}>
+                {timeLeft.expired ? "Applications Are Closed" : "Applications Close In"}
+              </div>
+
+              {!timeLeft.expired && (
+                <div className={styles.countdownRow}>
+                  <div className={styles.countdownUnit}>
+                    <span className={styles.countdownNum}>
+                      {String(timeLeft.days).padStart(2, "0")}
+                    </span>
+                    <span className={styles.countdownLabel}>Days</span>
+                  </div>
+                  <span className={styles.countdownColon}>:</span>
+                  <div className={styles.countdownUnit}>
+                    <span className={styles.countdownNum}>
+                      {String(timeLeft.hours).padStart(2, "0")}
+                    </span>
+                    <span className={styles.countdownLabel}>Hrs</span>
+                  </div>
+                  <span className={styles.countdownColon}>:</span>
+                  <div className={styles.countdownUnit}>
+                    <span className={styles.countdownNum}>
+                      {String(timeLeft.minutes).padStart(2, "0")}
+                    </span>
+                    <span className={styles.countdownLabel}>Min</span>
+                  </div>
+                  <span className={styles.countdownColon}>:</span>
+                  <div className={styles.countdownUnit}>
+                    <span className={styles.countdownNum}>
+                      {String(timeLeft.seconds).padStart(2, "0")}
+                    </span>
+                    <span className={styles.countdownLabel}>Sec</span>
+                  </div>
+                </div>
+              )}
+
+              {/* <ul className={styles.heroKeyDates}>
+                <li>
+                  <span className={styles.heroKeyDatesDot} aria-hidden="true" />
+                  Registration closes <strong>30 July 2026</strong>
+                </li>
+                <li>
+                  <span className={styles.heroKeyDatesDot} aria-hidden="true" />
+                  Admission decisions released by <strong>mid-August 2026</strong>
+                </li>
+                <li>
+                  <span className={styles.heroKeyDatesDot} aria-hidden="true" />
+                  Classes begin <strong>5 September 2026</strong>
+                </li>
+              </ul> */}
             </div>
           </motion.div>
         </div>
@@ -168,6 +260,41 @@ export default function CornrowAcademyPage() {
           writing, directing, producing, and editing alongside a small cohort of
           storytellers. The journey culminates in a theatrical premiere of your work.
         </p>
+      </section>
+
+      {/* ═══════════════ FORMAT ═══════════════ */}
+      <section className={styles.section}>
+        <div className={styles.sectionEyebrow}>Format</div>
+        <h2 className={styles.sectionTitle}>
+          Live, practical, and mentored — wherever you are.
+        </h2>
+        <div className={styles.formatGrid}>
+          {programmeFormat.map((item) => (
+            <div key={item} className={styles.formatCard}>
+              <span className={styles.formatDot} aria-hidden="true" />
+              {item}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════ IMPORTANT DATES ═══════════════ */}
+      <section className={styles.datesWrap}>
+        <div className={styles.section}>
+          <div className={styles.sectionEyebrow}>Important Dates</div>
+          <h2 className={styles.sectionTitle}>
+            Mark the calendar — the cohort moves on this schedule.
+          </h2>
+
+          <div className={styles.datesTable}>
+            {importantDates.map((row) => (
+              <div key={row.activity} className={styles.datesRow}>
+                <span className={styles.datesActivity}>{row.activity}</span>
+                <span className={styles.datesValue}>{row.date}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ═══════════════ MISSION ═══════════════ */}
@@ -337,6 +464,26 @@ export default function CornrowAcademyPage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ SPECIAL MASTERCLASSES ═══════════════ */}
+      <section className={styles.section}>
+        <div className={styles.sectionEyebrow}>Special Masterclasses</div>
+        <h2 className={styles.sectionTitle}>
+          Guest Sessions with Leading Christian Filmmakers.
+        </h2>
+        <p className={styles.sectionBody}>
+          Throughout the programme, participants will learn from accomplished Christian filmmakers and experienced industry professionals through a series of special guest sessions. Guest faculty are confirmed for each cohort and announced prior to the start of the programme, ensuring participants benefit from relevant insights and current industry expertise.
+        </p>
+
+        <div className={styles.masterclassGrid}>
+          {masterclasses.map((mc) => (
+            <div key={mc.topic} className={styles.masterclassCard}>
+              <div className={styles.masterclassTopic}>{mc.topic}</div>
+              {/* <div className={styles.masterclassLedBy}>{mc.ledBy}</div> */}
+            </div>
+          ))}
         </div>
       </section>
 

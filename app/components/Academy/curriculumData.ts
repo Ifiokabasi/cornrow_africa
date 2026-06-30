@@ -169,29 +169,65 @@ export const modules: Module[] = [
   },
 ];
 
-export const masterclasses = [
-  "Faith-Based Feature Films",
-  "Documentary Storytelling",
-  "Testimony Films",
-  "Evangelism Through Film",
-  "Producing Church Documentaries",
-  "Biblical Storytelling",
-  "Working with Actors",
-  "AI Tools for Christian Creatives",
-  "Film Financing",
-  "Distribution Strategies",
+export interface Masterclass {
+  topic: string;
+  ledBy: string;
+}
+
+// Guest faculty are described by caliber/background, not named individuals,
+// until specific guests are confirmed and contracted.
+export const masterclasses: Masterclass[] = [
+  {
+    topic: "Faith-Based Feature Filmmaking",
+    ledBy: "A recognized director with theatrical faith-based film credits",
+  },
+  {
+    topic: "Documentary Storytelling",
+    ledBy: "An award-winning Christian documentary filmmaker",
+  },
+  {
+    topic: "Testimony Films",
+    ledBy: "A producer known for ministry and testimony-driven film projects",
+  },
+  {
+    topic: "Evangelism Through Film",
+    ledBy: "A filmmaker with an established record in evangelistic media",
+  },
+  {
+    topic: "Producing Church Documentaries",
+    ledBy: "An established producer of church and ministry documentaries",
+  },
+  {
+    topic: "Biblical Storytelling",
+    ledBy: "A respected voice in biblically-grounded screenwriting",
+  },
+  {
+    topic: "Working with Actors",
+    ledBy: "A veteran director of faith-based dramatic features",
+  },
+  {
+    topic: "AI Tools for Christian Creatives",
+    ledBy: "An industry professional specializing in emerging production technology",
+  },
+  {
+    topic: "Film Financing",
+    ledBy: "An experienced faith-based film financier and producer",
+  },
+  {
+    topic: "Distribution Strategies",
+    ledBy: "A distribution strategist with faith-market release experience",
+  },
 ];
 
 export const workshops = [
   "Camera Operation",
-  "Cinematic Lighting",
+  "Lighting",
   "Audio Recording",
-  "Directing Actors",
-  "Documentary Interviews",
   "Colour Grading",
-  "Drone Cinematography",
-  "Editing",
-  "Story Development",
+  "Documentary Interview Techniques",
+  "Directing Actors",
+  "Pitching to Investors",
+  "Portfolio Reviews",
 ];
 
 export const whoShouldAttend = [
@@ -217,11 +253,37 @@ export const missionPoints = [
 ];
 
 export const graduateWith = [
-  "One completed faith-based short film",
-  "One documentary testimony film",
+  "A completed 5–10 minute short film",
+  "Documentary interview project",
   "Professional showreel",
   "Director's statement",
-  "Producer's portfolio",
-  "Production documents",
-  "Behind-the-scenes diary",
+  "Production portfolio",
+  "Professional CV",
+  "Behind-the-scenes production diary",
+  "Cornrow Academy Certificate",
 ];
+
+export interface DateRow {
+  activity: string;
+  date: string;
+}
+
+export const importantDates: DateRow[] = [
+  { activity: "Applications Open", date: "Now" },
+  { activity: "Registration Deadline", date: "30 July 2026" },
+  { activity: "Successful Applicants Notified", date: "Mid-August 2026" },
+  { activity: "Orientation", date: "Early September 2026" },
+  { activity: "Programme Begins", date: "5 September 2026" },
+  { activity: "Graduation & Film Showcase", date: "At the end of the programme" },
+];
+
+export const programmeFormat = [
+  "Live online classes",
+  "Practical workshops",
+  "Industry masterclasses",
+  "Individual mentoring",
+  "Final film production",
+];
+
+// Registration deadline used by the countdown timer (UTC midnight).
+export const REGISTRATION_DEADLINE_ISO = "2026-07-30T23:59:59Z";
