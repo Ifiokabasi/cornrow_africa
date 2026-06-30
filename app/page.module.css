@@ -137,11 +137,27 @@
 }
 
 .heroCtas {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* ✅ Perfect equal columns */
   gap: 16px;
-  flex-wrap: wrap;
   margin-top: 14px;
+  max-width: 520px;
+}
+
+.heroCtas .btnPrimary,
+.heroCtas .btnGhost {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ── Mobile responsive ── */
+@media (max-width: 480px) {
+  .heroCtas {
+    grid-template-columns: 1fr; /* ✅ Stack on mobile */
+    gap: 12px;
+    max-width: 300px;
+  }
 }
 
 .heroOnGold {
@@ -160,6 +176,8 @@
   border-color: var(--black);
   background: rgba(11,11,11,0.06);
 }
+
+
 
 /* ── Portrait panel ── */
 .heroPortrait {
@@ -315,6 +333,13 @@
 .btnGhost:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+
+  
+  
+  
 }
 
 .heroMeta {
